@@ -4,7 +4,9 @@ const Subject = require('../models/subject');
 const SubjectCtrl = {};
 
 SubjectCtrl.postSubject = async (req, res) => {
-    const subject = new Subject(req.body)
+    const subject = new Subject({
+        name: req.body.name
+    })
     console.log(subject);
 
     try {
@@ -48,7 +50,7 @@ SubjectCtrl.getStudentSubjectDetail = async (req, res) => {
 
         //We use populate to return the detail of every student
         //Populates automatically find every student that has the specified ID, instead of doing by us
-        let subject = await Subject.findById(subjectId).populate('student');
+        let subject = await Subject.findById(subjectId).populate('student');p
         if(!subject){
             return res.status(404).send({message: 'Subject not found'})
         }else{

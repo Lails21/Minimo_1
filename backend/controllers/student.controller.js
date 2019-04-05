@@ -5,7 +5,11 @@ const StudentCtrl = {};
 
 
 StudentCtrl.postStudent = async (req, res) => {
-    const student = new Student(req.body);
+    const student = new Student();
+    console.log(student);
+    student.name = req.body.name;
+    student.address = req.body.address;
+    student.phone = req.body.phone;
     console.log(student);
 
     try {
