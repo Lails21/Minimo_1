@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { SubjectService } from '../../services/subject.service';
+import { StudentService } from '../../services/student.service';
 import { Subject } from 'src/app/models/subject';
 import { ActivatedRoute } from '@angular/router';
+import { Student } from 'src/app/models/student';
+import { NgForm } from '@angular/forms';
 
 declare var M: any;
 
@@ -13,9 +16,13 @@ declare var M: any;
 export class DetailstudentComponent implements OnInit {
 
   subject: Subject;
+  studentsList: Student[] = [];
+  studentId: string;
+  subjectId: string;
 
-  constructor(private activatedRouter: ActivatedRoute, private subjectService: SubjectService) {
+  constructor(private activatedRouter: ActivatedRoute, private subjectService: SubjectService, private studentService: StudentService) {
     this.subject = new Subject();
+    this.subjectId = "";
    }
 
 
@@ -29,6 +36,7 @@ export class DetailstudentComponent implements OnInit {
       }
     });
     this.getStudentSubjectDetail(this.subject._id);
+    this.getStudents();
   }
 
   getStudentSubjectDetail(_id: string){
@@ -39,6 +47,34 @@ export class DetailstudentComponent implements OnInit {
       console.log(_id); 
       console.log(this.subject);
     });
+    this.subjectId = _id;
   }
+
+  getStudents(){
+    this.studentService.getStudents()
+      .subscribe(res => {
+        this.studentsList= res;
+        console.log("Hola");
+        console.log(res);
+      });
+  }
+
+  putStudentSubject(form: NgForm){
+    this.studentId = form.value._id;
+    console.log("Subject" + this.subjectId);
+    console.log("Student" + this.studentId);
+
+    this.subjectService.putStudentSubject(this.subjectId, this.studentId)
+    .subscribe(res => {
+      M.toast({html: 'Student guardado'});
+      //this.getStudent();
+      this.getStudentSubjectDetail(this.subjectId);
+      form.reset();
+    });
+  
+  }
+
+
+
 
 }

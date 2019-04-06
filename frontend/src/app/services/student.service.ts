@@ -19,4 +19,8 @@ export class StudentService {
   postStudent (Student: Student):Observable<Student>{
     return this.http.post<Student>(this.URL_API, Student);
   }
+
+  getStudents():Observable<Student[]>{
+    return this.http.get<Student[]>(this.URL_API);
+  }
 }

@@ -33,7 +33,6 @@ SubjectCtrl.putStudentSubject = async (req, res) => {
     console.log(subjectUpdated);
     console.log(subjectUpdated);
 
-    
 
     res.status(200).send({message: "Student added successfully to the subject"})
 }
@@ -46,11 +45,11 @@ SubjectCtrl.getSubjectDetail = async (req, res) => {
 
 SubjectCtrl.getStudentSubjectDetail = async (req, res) => {
     try {
-        const subjectId = req.params.id1;
+        //const subjectId = req.params.id1;
 
         //We use populate to return the detail of every student
         //Populates automatically find every student that has the specified ID, instead of doing by us
-        let subject = await Subject.findById(subjectId).populate('student');p
+        let subject = await Subject.findById(req.params.id).populate('student');
         if(!subject){
             return res.status(404).send({message: 'Subject not found'})
         }else{

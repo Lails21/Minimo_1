@@ -30,4 +30,8 @@ export class SubjectService {
   getStudentSubjectDetail(_id: string): Observable<Subject>{
     return this.http.get<Subject>(this.URL_API + `/studentdetail/${_id}`);
   }
+
+  putStudentSubject(subjectId: string, studentId: string){
+    return this.http.put(this.URL_API + '/', {"subjectId": subjectId, "studentId": studentId});
+  }
 }
