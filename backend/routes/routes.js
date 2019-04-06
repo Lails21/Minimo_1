@@ -7,7 +7,7 @@ router.post('/subjects', subjectCtrl.postSubject);
 router.get('/subjects', subjectCtrl.getSubjects);
 router.put('/subjects', subjectCtrl.putStudentSubject);
 router.get('/subjects/:id', subjectCtrl.getSubjectDetail);
-router.get('/subjects/:id1/studentdetail', subjectCtrl.getStudentSubjectDetail);
+router.get('/subjects/studentdetail/:id', subjectCtrl.getStudentSubjectDetail);
 
 router.post('/student', studentCtrl.postStudent);
 router.get('/student', studentCtrl.getStudents);

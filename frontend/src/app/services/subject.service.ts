@@ -28,6 +28,6 @@ export class SubjectService {
     return this.http.get<Subject>(this.URL_API + `/${_id}`);
   }
   getStudentSubjectDetail(_id: string): Observable<Subject>{
-    return this.http.get<Subject>(this.URL_API +`/${_id}` +"/studentdetail");
+    return this.http.get<Subject>(this.URL_API + `/studentdetail/${_id}`);
   }
 }
