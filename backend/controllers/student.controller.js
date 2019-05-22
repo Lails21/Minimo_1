@@ -27,10 +27,10 @@ StudentCtrl.getStudents = async (req, res) => {
 }
 
 StudentCtrl.getStudentDetail = async (req, res) => {
-        console.log(req.params.id);
-        let student = await Student.findById(req.params.id);
-        res.json(student);
-    
+    console.log(req.params.id);
+    let student = await Student.findById(req.params.id);
+    res.json(student);
+
 }
 
 module.exports = StudentCtrl;
