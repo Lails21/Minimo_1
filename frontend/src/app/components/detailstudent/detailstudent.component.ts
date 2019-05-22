@@ -13,6 +13,7 @@ declare var M: any;
   templateUrl: './detailstudent.component.html',
   styleUrls: ['./detailstudent.component.css']
 })
+
 export class DetailstudentComponent implements OnInit {
 
   subject: Subject;
@@ -44,7 +45,7 @@ export class DetailstudentComponent implements OnInit {
     .subscribe(res =>{
       this.subject = res;
       console.log(res);
-      console.log(_id); 
+      console.log(_id);
       console.log(this.subject);
     });
     this.subjectId = _id;
@@ -71,7 +72,7 @@ export class DetailstudentComponent implements OnInit {
       this.getStudentSubjectDetail(this.subjectId);
       form.reset();
     });
-  
+
   }
 
 

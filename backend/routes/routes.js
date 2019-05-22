@@ -11,5 +11,6 @@ router.get('/subjects/studentdetail/:id', subjectCtrl.getStudentSubjectDetail);
 
 router.post('/student', studentCtrl.postStudent);
 router.get('/student', studentCtrl.getStudents);
+router.get('/student/:id', studentCtrl.getStudentDetail);
 
 module.exports = router;
